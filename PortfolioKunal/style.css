@@ -42,46 +42,59 @@ min-height: 100vh;
    
 }
 .clock{
-    width: 350px;
-    height: 350px;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items:center;
-    background: url(img/clock.png);
+    background-image: url(img/clock.png);
     background-size: cover;
     border: 4px solid #091921;
     border-radius: 50%;
     box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
             inset 0 -15px 15px rgba(255, 255, 255, 0.05),
              0 -15px 15px rgba(0,0, 0, 0.3),
-            inset 0 -15px 15px rgba(0,0, 0, 0.3);      
+            inset 0 -15px 15px rgba(0,0, 0, 0.3);  
+    /* opacity: 50%;     */
+    opacity: 300%;
 }
-
+.liquid-shape{
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    z-index: -1;
+    top: 10%;
+    opacity: 50%;
+}
 .clock:before{
 content: '';
 position: absolute;
-width: 15px;
-height: 15px;
+width:4.28px;
+height: 4.28px;
 background: #ffd700;
 border-radius: 50%;
 z-index: 10000;
+opacity: 300%;
 }
 .clock .hour,
 .clock .min,
 .clock .sec{
     position: absolute;
+
 }
 .clock .hour, .hr{
-width: 160px;
-height: 160px;
+width: 45.71px;
+height: 45.71px;
 }
 .clock .min, .mn{
-width: 190px;
-height: 190px;
+width: 54.28px;
+height: 54.28px;
+
 }
 .clock .sec, .sc{
-width: 230px;
-height: 230px;
+width: 65.71px;
+height: 65.71px;
+
 }
 .hr, .mn, .sc{
     display: flex;
@@ -89,33 +102,37 @@ height: 230px;
     /* align-items: center; */
     position: absolute;
     border-radius: 50%;
+    opacity: 300%;
 }
 .hr:before{
    content: ''; 
    position: absolute;
-   width: 8px;
-   height: 80px;
+   width: 2.28px;
+   height: 22.8px;
    background:#ffd700 ;
    z-index: 10;
    border-radius: 6px 6px 0 0;
+   opacity: 300%;
 }
 .mn:before{
    content: ''; 
    position: absolute;
-   width: 4px;
-   height: 90px;
+   width: 1.14px;
+   height: 25.71px;
    background:#fff ;
    z-index: 11;
    border-radius: 6px 6px 0 0;
+   opacity: 300%;
 }
 .sc:before{
    content: ''; 
    position: absolute;
-   width: 2px;
-   height: 150px;
+   width: 0.57px;
+   height: 42.85px;
    background:#fff ;
    z-index: 12;
    border-radius: 6px 6px 0 0;
+   opacity: 300%;
 }
 
 header{
@@ -953,6 +970,14 @@ section{
 .navlist.open{
 top: 100%;
 }
+.container{
+width: 90%;
+max-width: 1000px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .home{
     grid-template-columns: 1fr;
 }
@@ -990,7 +1015,6 @@ width: 300px;
 
 
 /* star */
-
 
 
 
