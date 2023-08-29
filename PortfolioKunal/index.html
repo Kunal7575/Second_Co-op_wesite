@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kunal - Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -24,8 +25,76 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div id="menu-icon" class="bx bx-menu"></div>
-    </header>
+        <script>
+            let menuLi=document.querySelectorAll('header ul li a');
+            let section=document.querySelectorAll('section');
 
+function activeMenu(){
+    let len=section.length;
+    while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    menuLi.forEach(sec=>sec.classList.remove("active"));
+    menuLi[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll",activeMenu);
+
+
+
+
+
+// navbar stick karne kay liye
+const header=document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",this.window.scrollY>50)
+})
+
+let menuIcon=document.querySelector("#menu-icon");
+let navlist=document.querySelector("#.navlist");
+
+menuIcon.onClick=()=>{
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+
+}
+window.onscroll=()=>{
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+</script>
+<div class="clock">
+    <!-- <div class="dev"><span>K</span>unal's Portfolio</div> -->
+            <div class="hour">
+                <div class="hr" id="hr"></div>
+            </div>
+            <div class="min">
+                <div class="mn" id="mn"></div>
+            </div>
+            <div class="sec">
+                <div class="sc" id="sc"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const deg=6;
+            const hr=document.querySelector('#hr');
+            const mn=document.querySelector('#mn');
+            const sc=document.querySelector('#sc');
+        
+            setInterval(()=>{
+            let day=new Date();
+            let hh=day.getHours()*30;
+            let mm=day.getMinutes()*deg;
+            let ss=day.getSeconds()*deg;
+        
+            
+            hr.style.transform=`rotateZ(${(hh)+(mm/12)}deg)`;
+            mn.style.transform=`rotateZ(${mm}deg)`;
+            sc.style.transform=`rotateZ(${ss}deg)`;
+            })
+        </script>
+
+</header>
 
     <!-- Home -->
     <section id="home" class="home">
@@ -38,8 +107,47 @@
                     <span class="word">Frontend&nbsp; Developer</span>
                     <span class="word">UX/UI&nbsp; Developer</span>
                     <span class="word">Systems&nbsp; Analyst</span>
-                </h3>
+                    </h3>
+                    <script>
+                let words=document.querySelectorAll(".word");
+words.forEach((word)=>{
+    let letters=word.textContent.split("");
+    word.textContent="";
+    letters.forEach((letter)=>{
+        let span=document.createElement("span");
+        span.textContent=letter;
+        span.className="letter";
+        word.append(span);
+    });
+});
+
+let currentWordIndex=0;
+let maxWordIndex=words.length -1;
+words[currentWordIndex].style.opacity="1";
+
+let changeText=()=>{
+    let currentWord=words[currentWordIndex];
+    let nextWord=currentWordIndex===maxWordIndex ? words[0]:words[currentWordIndex+1];
+
+    Array.from(currentWord.children).forEach((letter,i)=>{
+        setTimeout(()=>{
+            letter.className="letter out";
+        },i * 80);
+    });
+    nextWord.style.opacity="1";
+    Array.from(nextWord.children).forEach((letter,i)=>{
+        letter.className="letter behind";
+        setTimeout(()=>{
+            letter.className="letter in";
+        },340 + i * 80);
+    });
+    currentWordIndex=currentWordIndex===maxWordIndex ? 0 : currentWordIndex+1;
+};
+changeText();
+setInterval(changeText,3000)
+</script>
             </div>
+            
             <p>I am an inquisitive software developer, who constantly wants to learn. I am passionate about coding and always keen to acquire new skills. I believe that I have good time management skills and am consistent in my work. I am confident in my abilities yet I believe in constructive criticism because that will help me become the best version of myself.</p>
             <div class="info-box">
                 <div class="email-info">
@@ -64,43 +172,41 @@
             </div>
         </div>
 
-<!-- <div class="home-image">
+ <div class="home-image"> 
     <div class="img-box">
-        <img src="img/clock.png" alt="">
-         <video loop autoplay src="https://thriftywebsite.s3.ap-south-1.amazonaws.com/assets/Videos/WelcomeVid.mp4"></video> -->
+        <img src="img/kunal_photo.jpg" alt="">
+         <!-- <video loop autoplay src="https://thriftywebsite.s3.ap-south-1.amazonaws.com/assets/Videos/WelcomeVid.mp4"></video>  -->
     </div>
+ </div>
+<div class="liquid-shape">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+        <path fill="#ffd700">
+            <animate attributeName="d"
+            dur="20000ms"
+            repeatCount="indefinite"
+            values="
+            M449,328.5Q407,407,328.5,407Q250,407,189.5,389Q129,371,89.5,310.5Q50,250,97.5,197.5Q145,145,197.5,77.5Q250,10,333.5,46.5Q417,83,454,166.5Q491,250,449,328.5Z;
 
-</div>  
-<div class="clock">
-    <div class="dev"><span>K</span>unal's Portfolio</div>
-    <div class="hour">
-        <div class="hr" id="hr"></div>
-    </div>
-    <div class="min">
-        <div class="mn" id="mn"></div>
-    </div>
-    <div class="sec">
-        <div class="sc" id="sc"></div>
-    </div>
+            M449.5,333Q416,416,333,440Q250,464,168.5,438.5Q87,413,84,331.5Q81,250,95,179.5Q109,109,179.5,119Q250,129,299.5,140Q349,151,416,200.5Q483,250,449.5,333Z;
+
+            M447.39351,329.84026Q409.68053,409.68053,329.84026,439.47338Q250,469.26623,178.50583,431.12728Q107.01167,392.98833,88.21298,321.49417Q69.4143,250,79.72794,170.02079Q90.04158,90.04158,170.02079,98.46171Q250,106.88184,303.18636,125.25456Q356.37272,143.62728,420.73961,196.81364Q485.10649,250,447.39351,329.84026Z;
+
+            M435.5,315.5Q381,381,315.5,431Q250,481,186.5,429Q123,377,68,313.5Q13,250,85.5,204Q158,158,204,114Q250,70,331.5,78.5Q413,87,451.5,168.5Q490,250,435.5,315.5Z;
+
+            M392.59281,305.284Q360.568,360.568,305.284,374.81201Q250,389.05601,198.2484,371.27961Q146.4968,353.5032,146.15239,301.7516Q145.80798,250,124.32079,176.4168Q102.83361,102.83361,176.4168,65.98481Q250,29.13601,312.0896,77.4784Q374.17921,125.82079,399.39841,187.9104Q424.61761,250,392.59281,305.284Z;
+
+            M360.34922,294.44974Q338.89948,338.89948,294.44974,375.4738Q250,412.04812,204.84064,376.18342Q159.68128,340.31872,123.45188,295.15936Q87.22249,250,116.65936,198.04812Q146.09623,146.09623,198.04812,148.03525Q250,149.97426,311.44759,138.53954Q372.89519,127.10481,377.34707,188.55241Q381.79896,250,360.34922,294.44974Z;
+
+            M432.47188,329.2292Q408.4584,408.4584,329.2292,405.70224Q250,402.94607,175.30451,401.16853Q100.60901,399.39099,52.01463,324.69549Q3.42026,250,41.99778,165.28765Q80.5753,80.5753,165.28765,77.55508Q250,74.53486,318.04382,94.22361Q386.08764,113.91236,421.2865,181.95618Q456.48537,250,432.47188,329.2292Z;
+
+            M449,328.5Q407,407,328.5,407Q250,407,189.5,389Q129,371,89.5,310.5Q50,250,97.5,197.5Q145,145,197.5,77.5Q250,10,333.5,46.5Q417,83,454,166.5Q491,250,449,328.5Z;
+            "
+            ></animate>
+        </path>
+      </svg>
 </div>
-<script type="text/javascript">
-    const deg=6;
-    const hr=document.querySelector('#hr');
-    const mn=document.querySelector('#mn');
-    const sc=document.querySelector('#sc');
-
-    setInterval(()=>{
-    let day=new Date();
-    let hh=day.getHours()*30;
-    let mm=day.getMinutes()*deg;
-    let ss=day.getSeconds()*deg;
-
-    
-    hr.style.transform=`rotateZ(${(hh)+(mm/12)}deg)`;
-    mn.style.transform=`rotateZ(${mm}deg)`;
-    sc.style.transform=`rotateZ(${ss}deg)`;
-    })
-</script>
+<!-- </div>   -->
+ <!-- </div> -->
 
 
     </section>
